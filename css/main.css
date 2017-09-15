@@ -1,4 +1,25 @@
-#textInput {
-	border-radius: 5px;
-	width: 30%;
+.objectBox {
+	border-radius: 7px;
+	width: 90%;
+	background-color: white;
+	border-style: solid;
+	border-color: #D3D3D3;
+	padding: 15px;
+	margin: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: auto;
+}
+
+.objectBoxColapse {
+	height: 120px;
+}
+
+.expandIcon {
+	text-align: right;
+}
+
+body {
+	background-color: #F5F5F5;
+	box-sizing: border-box;
 }
