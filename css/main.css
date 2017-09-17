@@ -18,7 +18,7 @@ body {
 	background-color: #F5F5F5;
 	box-sizing: border-box;
 	float: left;
-	padding-top: 12%;
+	padding-top: 150px;
 }
 
 .head {
@@ -28,7 +28,7 @@ body {
 .header {
 	background-color: #4169E1;
 	margin: 0px;
-	height: 12%;
+	height: 150px;
 	position: fixed;
 	top: 0;
 	left: 0;
