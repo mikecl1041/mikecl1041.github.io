@@ -8,6 +8,7 @@
 	margin: 30px;
 	margin-left: auto;
 	margin-right: auto;
+	overflow: auto;
 }
 
 .objectBoxColapse {
