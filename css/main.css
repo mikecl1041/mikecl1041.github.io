@@ -12,14 +12,27 @@
 }
 
 .objectBoxColapse {
-	height: 120px;
-}
-
-.expandIcon {
-	text-align: right;
+	height: 175px;
 }
 
 body {
 	background-color: #F5F5F5;
 	box-sizing: border-box;
+	float: left;
+	padding-top: 75px;
+}
+
+.head {
+	text-align: right;
+}
+
+.header {
+	background-color: #4169E1;
+	margin: 0px;
+	height: 75px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
 }
