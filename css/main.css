@@ -19,7 +19,7 @@ body {
 	background-color: #F5F5F5;
 	box-sizing: border-box;
 	float: left;
-	padding-top: 150px;
+	padding-top: 125px;
 }
 
 .head {
@@ -29,10 +29,14 @@ body {
 .header {
 	background-color: #4169E1;
 	margin: 0px;
-	height: 150px;
+	height: 125px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	width: 100%;
+}
+
+.date {
+	font-size: 80%;
 }
