@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
 <title>My Website!</title>
@@ -16,14 +19,40 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="games.html">Projects</a>
+      <a class="nav-item nav-link active" href="games.html">Projects</a>
       <a class="nav-item nav-link" href="resources.html">Resources</a>
       <a class="nav-item nav-link" href="flyers.html">#Flyers</a>
     </div>
   </div>
 </nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 p-4">
+      <div class="card">
+        <div class="card-header">
+          Memory
+        </div>
+        <div class="card-body">
+          <div style="height: 300px; width: 300px">
+            <div id="1" style="height: 100px; width: 100px; float: left; background-color: coral"></div>
+            <div id="2" style="height: 100px; width: 100px; float: left; background-color: red"></div>
+            <div id="3" style="height: 100px; width: 100px; float: left; background-color: blue"></div>
+            <div id="4" style="height: 100px; width: 100px; clear: left; float: left; background-color: coral"></div>
+            <div id="5" style="height: 100px; width: 100px; float: left; background-color: yellow"></div>
+            <div id="6" style="height: 100px; width: 100px; float: left; background-color: orange"></div>
+            <div id="7" style="height: 100px; width: 100px; clear: left; float: left; background-color: pink"></div>
+            <div id="8" style="height: 100px; width: 100px; float: left; background-color: coral"></div>
+            <div id="9" style="height: 100px; width: 100px; float: left; background-color: red"></div>
+          </div>
+          <button id="start-button" class="btn btn-primary">Start!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="text-secondary">
   <div class="container-fluid p-md-5 bg-light">
@@ -42,9 +71,10 @@
   </div>
 </footer>
 
+<script src="js/simon.js"></script>
 <script src="https://use.fontawesome.com/b279c19f8b.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
