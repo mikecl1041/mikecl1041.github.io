@@ -31,13 +31,16 @@ function clickReturn () {
     if(counter == pattern.length - 1) {
       $(document.getElementById(this.id)).fadeOut("fast").fadeIn("fast");
       $(document.getElementById('streaker')).fadeOut().fadeIn();
-      //alert("WIN!");
       pattern = [];
       counter = 0;
       streak++;
       difficulty++;
       document.getElementById("streak").innerHTML = streak;
-      start();
+      (function() {
+        setTimeout(function() {
+          start();
+        }, 2000);
+      })();
     } else {
       $(document.getElementById(this.id)).fadeOut("fast").fadeIn("fast");
       counter++;
@@ -45,7 +48,6 @@ function clickReturn () {
   } else {
   	$(document.getElementById(this.id)).fadeOut("fast").fadeIn("fast");
     $(document.getElementById('streaker')).fadeOut().fadeIn();
-    //alert("FAIL!");
   	pattern = [];
   	counter = 0;
   	streak = 0;
