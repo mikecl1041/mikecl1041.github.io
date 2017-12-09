@@ -15,26 +15,41 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="games.html">Projects</a>
-      <a class="nav-item nav-link" href="resources.html">Resources</a>
-      <a class="nav-item nav-link" href="flyers.html">#Flyers</a>
-    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="games.html">Games</a>
+          <a class="dropdown-item" href="miniapps.html">Mini Apps</a>
+          <a class="dropdown-item" href="#">Applications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="resources.html">Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="flyers.html">#Flyers</a>
+      </li>
+    </ul>
   </div>
 </nav>
 
 <footer class="text-secondary">
   <div class="container-fluid p-md-5 bg-light">
   	<div class="float-left">
-  	  <a href="https://twitter.com" target="_blank" class="text-muted">Twitter <i class="fa fa-external-link" aria-hidden="true"></i></a>
+  	  <a href="https://twitter.com" target="_blank" class="text-muted">Twitter <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
   	</div>
   	<div class="float-left pl-3">
-  	  <a href="https://github.com" target="_blank" class="text-muted">GitHub <i class="fa fa-external-link" aria-hidden="true"></i></a>
+  	  <a href="https://github.com" target="_blank" class="text-muted">GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
   	</div>
   	<div class="float-left pl-3">
-  	  <a href="https://linkedin.com" target="_blank" class="text-muted">LinkedIn <i class="fa fa-external-link" aria-hidden="true"></i></a>
+  	  <a href="https://linkedin.com" target="_blank" class="text-muted">LinkedIn <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
     </div><br>
     <div>
     <p>Designed in San Diego, CA</p>
@@ -42,7 +57,7 @@
   </div>
 </footer>
 
-<script src="https://use.fontawesome.com/b279c19f8b.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
