@@ -18,7 +18,7 @@ document.querySelector("#my-list").addEventListener("click", function(i) {
 
 document.querySelector("#search-item").addEventListener("keyup", function(){
 	document.querySelectorAll(".list-group-item").forEach(function(li) {
-		if(li.firstElementChild.innerText.indexOf(document.querySelector("#search-item").value) < 0) {
+		if(li.firstElementChild.innerText.toLowerCase().indexOf(document.querySelector("#search-item").value.toLowerCase()) < 0) {
 			li.style.display = "none";
 		} else {
 			li.style.display = "initial";
