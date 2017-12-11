@@ -51,14 +51,14 @@
 					<form>
 						<div class="form-row">
 							<div class="col-8">
-								<input type="text" class="form-control" id="search-item" placeholder="search">
+								<input type="text" class="form-control" id="search-item" placeholder="search" maxlength="30">
 							</div>
 						</div>
 					</form>
 					<div class="p-2">
 						<span>My List:</span>
 						<ul class="list-group" id="my-list">
-							<li class="list-group-item" id="example">
+							<li class="list-group-item">
 								<span>Example item...</span>
 								<button type="button" class="btn btn-danger float-right delete">delete</button>
 							</li>
@@ -67,9 +67,9 @@
 					<form>
 						<div class="form-row">
 							<div class="col-8">
-								<input type="text" class="form-control" id="list-item" placeholder="add items here">
+								<input type="text" class="form-control" id="list-item" placeholder="add items here" maxlength="30">
 							</div>
-							<button type="button" class="btn btn-primary" id="add-item">Add</button>
+							<button type="submit" class="btn btn-primary" id="add-item">Add</button>
 						</div>
 					</form>
 				</div>

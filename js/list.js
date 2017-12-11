@@ -1,12 +1,18 @@
 
 document.querySelector("#add-item").addEventListener("click", function(){
-	var item = document.querySelector("#example");
-	var newItem = item.cloneNode("true");
+	event.preventDefault();
 	var itemText = document.querySelector("#list-item").value
-	newItem.firstElementChild.textContent = itemText;
-	newItem.removeAttribute("id");
+	var li = document.createElement("li");
+	var span = document.createElement("span");
+	var button = document.createElement("button");
+	li.appendChild(span);
+	li.appendChild(button);
+	button.className = "btn btn-danger float-right delete";
+	li.className = "list-group-item";
+	span.innerText = itemText;
+	button.innerText = "delete";
+	document.querySelector("#my-list").appendChild(li);
 	document.querySelector("#list-item").value = "";
-	document.querySelector("#my-list").appendChild(newItem);
 });
 
 document.querySelector("#my-list").addEventListener("click", function(i) {
