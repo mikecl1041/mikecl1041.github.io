@@ -1,6 +1,7 @@
-var year = 2017;
-var month = 12;
+var year = new Date().getFullYear();
+var month = new Date().getMonth() + 1;
 var monthText;
+var selectedDay = document.getElementById("selected-day");
 
 document.querySelector("#prev").addEventListener("click", function() {
 	prevMonth();
@@ -9,11 +10,18 @@ document.querySelector("#next").addEventListener("click", function() {
 	nextMonth();
 });
 
+document.querySelector("#table").addEventListener("click", function(i) {
+	if(i.target.innerHTML > 0) {
+		selectedDay.innerHTML = monthText + " " + i.target.innerHTML + ", " + year;
+	};
+});
+
 function clear() {
 	document.querySelectorAll(".day").forEach(function(e) {
 		e.innerHTML = "";
 	})
-}
+	selectedDay.innerHTML = "";
+};
 
 function nextMonth() {
 	if(month < 12) {
@@ -39,7 +47,7 @@ function prevMonth() {
 		clear();
 		update();
 	}
-}
+};
 
 function update() {
 	var firstDay = new Date(year, month - 1, 1).getDay() + 1;
@@ -48,7 +56,7 @@ function update() {
 	})();
 	for(i = 0; i < lastDay; i++) {
 		document.getElementById(firstDay + i).innerHTML = 1 + i;
-	}
+	};
 	switch (month) {
 		case 1:
 			monthText = "January";
@@ -88,7 +96,7 @@ function update() {
 			break;
 	}
 	document.querySelector("#month").innerHTML = monthText + " " + year;
-}
+};
 
 update();
 
