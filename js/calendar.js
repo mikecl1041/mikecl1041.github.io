@@ -3,6 +3,16 @@ var month = new Date().getMonth() + 1;
 var monthText;
 var selectedDay = document.getElementById("selected-day");
 
+/*function CalEntry (yr, mn, dy, st, et, ad, ds) {
+	this.entryYear = yr;
+	this.entryMonth = mn;
+	this.entryDay = dy;
+	this.entryStartTime = st;
+	this.entryEndTime = et;
+	this.entryAllDay = ad;
+	this.entryDescription = ds;
+}*/
+
 document.querySelector("#prev").addEventListener("click", function() {
 	prevMonth();
 });
@@ -21,6 +31,9 @@ function clear() {
 		e.innerHTML = "";
 	})
 	selectedDay.innerHTML = "";
+	if(document.querySelector(".bg-primary") != null) {
+		document.querySelector(".bg-primary").classList.remove("bg-primary");
+	};
 };
 
 function nextMonth() {
@@ -56,7 +69,18 @@ function update() {
 	})();
 	for(i = 0; i < lastDay; i++) {
 		document.getElementById(firstDay + i).innerHTML = 1 + i;
+		var fullDate = new Date();
+		fullDate.setFullYear(year, month - 1, 1 + i);
+		fullDate.setHours(0, 0, 0, 0);
+		document.getElementById(firstDay + i).setAttribute("data-date", fullDate);
 	};
+	var today = new Date();
+	today.setHours(0, 0, 0, 0);
+	document.querySelectorAll(".day").forEach(function(i) {
+		if (i.getAttribute("data-date") == today) {
+			i.className += " bg-primary";
+		}
+	});
 	switch (month) {
 		case 1:
 			monthText = "January";
