@@ -19,7 +19,10 @@ var Post = function(name, text, link) {
 	postHold = new Post(name, text, link);
 });*/
 
-document.querySelector('#submit').addEventListener("click", loadDoc());
+document.querySelector('#submit').addEventListener("click", function() {
+	event.preventDefault();
+	loadDoc();
+});
 
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
