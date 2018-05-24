@@ -40,32 +40,15 @@
   </div>
 </nav>
 
+<button id="update" class="btn btn-primary">Update</button>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 p-4">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <span class="name text-muted small">Michael LaRosa</span>
-          <span class="date text-muted small">5/2/2018</span>
-          <span class="float-right likes">Likes: 5</span><br>
-          <a class="link" href="https://twitter.com" target="_blank">twitter.com</a><br>
-          <span class="text-entered">This is the first post</span>
-        </li>
-        <li class="list-group-item">
-          <span class="name text-muted small">Michael LaRosa</span>
-          <span class="date text-muted small">5/2/2018</span>
-          <span class="float-right likes">Likes: 4</span><br>
-          <a class="link" href="https://twitter.com" target="_blank">twitter.com</a><br>
-          <span class="text-entered">This is the second post</span>
-        </li>
-        <li class="list-group-item">
-          <span class="name text-muted small">Michael LaRosa</span>
-          <span class="date text-muted small">5/2/2018</span>
-          <span class="float-right likes">Likes: 2</span><br>
-          <a class="link" href="https://twitter.com" target="_blank">twitter.com</a><br>
-          <span class="text-entered">This is the third post</span>
-        </li>
+      <ul id="post-container" class="list-group">
+      </ul>
         <br>
+      <ul class="list-group">
         <li class="list-group-item">
           <form>
             <div class="input-group">
@@ -83,13 +66,13 @@
             <div class="form-group">
               <textarea class="form-control" id="text" rows="3" placeholder="enter text here"></textarea>
             </div>
-            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+            <button id="submit" class="btn btn-primary">Submit</button>
           </form>
         </li>
       </ul>
     </div>
     <div class="col-md-4 p-4">
-      <div id="demo">
+      <div>
         <ul class="list-group">
           <li class="list-group-item">           
           </li>
@@ -118,6 +101,20 @@
   </div>
 </footer>
 
+
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAYGkrSG7CLTXaHxhV2U92CgaKSbuZxc38",
+    authDomain: "forums-d25c3.firebaseapp.com",
+    databaseURL: "https://forums-d25c3.firebaseio.com",
+    projectId: "forums-d25c3",
+    storageBucket: "forums-d25c3.appspot.com",
+    messagingSenderId: "875214740775"
+  };
+  firebase.initializeApp(config);
+</script>
 <script src="js/forum.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
