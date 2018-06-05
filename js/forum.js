@@ -7,6 +7,7 @@ document.querySelector('#submit').addEventListener("click", function() {
 var db = firebase.firestore();
 var ref = db.collection('Forum Content');
 var info = [];
+var lastVisible;
 
 (function(){
 	query();
@@ -30,11 +31,27 @@ function loadDoc() {
 }
 
 function query() {
-	ref.where("active", "==", true).orderBy("date").limit(5).get().then(function(querySnapshot) {
+	ref.orderBy("date").limit(5).get().then(function(querySnapshot) {
 		querySnapshot.docs.map(function (documentSnapshot,x) {
 			info.push(documentSnapshot.data());
 			info[x].key = documentSnapshot.id;
 		});
+		lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+	});
+}
+
+function next() {
+	ref.orderBy("date").startAfter(lastVisible).limit(5).get().then(function(querySnapshot) {
+		querySnapshot.docs.map(function (documentSnapshot,x) {
+			info.push(documentSnapshot.data());
+			info[x].key = documentSnapshot.id;
+		});
+		if (querySnapshot.docs[querySnapshot.docs.length-1] != undefined) {
+			lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+		} else {
+			console.log("No More Documents");
+		}
+		
 	});
 }
 
@@ -42,40 +59,40 @@ var postCount = 0;
 
 function populate() {
 	for (i=0; i<info.length; i++) {
-		document.getElementById("post-container").appendChild(document.createElement("li")).className = "post list-group-item";
+		document.getElementById("post-container").appendChild(document.createElement("li")).className = "post list-group-item " + info[i].active;
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "name text-muted small";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"))
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "date text-muted small";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "float-right likes";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"))
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "post-count text-muted small float-right";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "date text-muted small float-right";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("a")).className = "link";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-delete";
 		document.querySelectorAll('.post')[postCount].querySelector('.link').href = "https://" + info[i].link;
 		document.querySelectorAll('.post')[postCount].querySelector('.link').target = "_blank";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"))
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "text-entered";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-danger btn-sm delete";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "likes";
 		document.querySelectorAll('.post')[postCount].querySelector('.name').innerHTML = info[i].name;
 		document.querySelectorAll('.post')[postCount].querySelector('.date').innerHTML = info[i].date;
+		document.querySelectorAll('.post')[postCount].querySelector('.post-count').innerHTML = "#" + (postCount + 1);
 		document.querySelectorAll('.post')[postCount].querySelector('.text-entered').innerHTML = info[i].text;
 		document.querySelectorAll('.post')[postCount].querySelector('.link').innerHTML = info[i].link;
 		document.querySelectorAll('.post')[postCount].querySelector('.likes').innerHTML = info[i].likes;
+		document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete"
 		document.querySelectorAll('.post')[postCount].id = info[i].key;
 		postCount++;
 	}
 	info = [];
-	query();
+	next();
 }
 
 document.getElementById("update").addEventListener("click", function() {
-	//query();
 	populate();
 });
 
 document.querySelector('#post-container').addEventListener("click", function(e) {
 	if(e.target.className.indexOf("delete") > 0) {
 		db.collection("Forum Content").doc(e.target.parentElement.id).update({active: false});
-		//var li = e.target.parentElement;
-		//li.parentElement.removeChild(li);
-		//db.collection("Forum Content").doc(e.target.parentElement.id).delete();
 	}
 });
