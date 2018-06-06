@@ -72,14 +72,16 @@ function populate() {
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "text-entered";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-danger btn-sm delete";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "likes";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-info btn-sm like-click";
+		document.querySelectorAll('.post')[postCount].querySelector('.like-click').innerHTML = "like ";
+		document.querySelectorAll('.post')[postCount].querySelector('.like-click').appendChild(document.createElement("span")).className = "badge badge-light like-count";
 		document.querySelectorAll('.post')[postCount].querySelector('.name').innerHTML = info[i].name;
 		document.querySelectorAll('.post')[postCount].querySelector('.date').innerHTML = info[i].date;
 		document.querySelectorAll('.post')[postCount].querySelector('.post-count').innerHTML = "#" + (postCount + 1);
 		document.querySelectorAll('.post')[postCount].querySelector('.text-entered').innerHTML = info[i].text;
 		document.querySelectorAll('.post')[postCount].querySelector('.link').innerHTML = info[i].link;
-		document.querySelectorAll('.post')[postCount].querySelector('.likes').innerHTML = info[i].likes;
-		document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete"
+		document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete";
+		document.querySelectorAll('.post')[postCount].querySelector('.like-count').innerHTML = info[i].likes;
 		document.querySelectorAll('.post')[postCount].id = info[i].key;
 		postCount++;
 	}
@@ -94,5 +96,12 @@ document.getElementById("update").addEventListener("click", function() {
 document.querySelector('#post-container').addEventListener("click", function(e) {
 	if(e.target.className.indexOf("delete") > 0) {
 		db.collection("Forum Content").doc(e.target.parentElement.id).update({active: false});
-	}
+	} else if(e.target.className.indexOf("like-click") > 0) {
+		ref.doc(e.target.parentElement.id).get().then(function(doc) {
+			var likeCount = doc.data().likes + 1;
+			ref.doc(e.target.parentElement.id).update({likes: likeCount});
+			document.getElementById(e.target.parentElement.id).querySelector('.like-count').innerHTML = likeCount;
+		});
+	};
 });
+
