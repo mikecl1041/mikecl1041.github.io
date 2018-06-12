@@ -65,11 +65,12 @@ function populate() {
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "date text-muted small float-right";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("a")).className = "link";
-		document.querySelectorAll('.post')[postCount].querySelector('.link').href = "https://" + info[i].link;
-		document.querySelectorAll('.post')[postCount].querySelector('.link').target = "_blank";
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("span")).className = "text-entered";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("div")).className = "embed";
+		//document.querySelectorAll('.post')[postCount].appendChild(document.createElement("a")).className = "link";
+		//document.querySelectorAll('.post')[postCount].querySelector('.link').href = "https://" + info[i].link;
+		//document.querySelectorAll('.post')[postCount].querySelector('.link').target = "_blank";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-danger btn-sm delete";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-info btn-sm like-click";
@@ -79,7 +80,8 @@ function populate() {
 		document.querySelectorAll('.post')[postCount].querySelector('.date').innerHTML = info[i].date;
 		document.querySelectorAll('.post')[postCount].querySelector('.post-count').innerHTML = "#" + (postCount + 1);
 		document.querySelectorAll('.post')[postCount].querySelector('.text-entered').innerHTML = info[i].text;
-		document.querySelectorAll('.post')[postCount].querySelector('.link').innerHTML = info[i].link;
+		document.querySelectorAll('.post')[postCount].querySelector('.embed').innerHTML = info[i].link;
+		//document.querySelectorAll('.post')[postCount].querySelector('.link').innerHTML = info[i].link;
 		document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete";
 		document.querySelectorAll('.post')[postCount].querySelector('.like-count').innerHTML = info[i].likes;
 		document.querySelectorAll('.post')[postCount].id = info[i].key;
@@ -87,6 +89,7 @@ function populate() {
 	}
 	info = [];
 	next();
+	twttr.widgets.load()
 }
 
 document.getElementById("update").addEventListener("click", function() {
