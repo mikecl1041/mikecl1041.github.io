@@ -74,15 +74,19 @@ function populate() {
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-danger btn-sm delete";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-info btn-sm like-click";
+		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-warning btn-sm reply";
 		document.querySelectorAll('.post')[postCount].querySelector('.like-click').innerHTML = "like ";
 		document.querySelectorAll('.post')[postCount].querySelector('.like-click').appendChild(document.createElement("span")).className = "badge badge-light like-count";
 		document.querySelectorAll('.post')[postCount].querySelector('.name').innerHTML = info[i].name;
-		document.querySelectorAll('.post')[postCount].querySelector('.date').innerHTML = info[i].date;
+		document.querySelectorAll('.post')[postCount].querySelector('.date').innerHTML = info[i].date.toLocaleString();
 		document.querySelectorAll('.post')[postCount].querySelector('.post-count').innerHTML = "#" + (postCount + 1);
 		document.querySelectorAll('.post')[postCount].querySelector('.text-entered').innerHTML = info[i].text;
 		document.querySelectorAll('.post')[postCount].querySelector('.embed').innerHTML = info[i].link;
 		//document.querySelectorAll('.post')[postCount].querySelector('.link').innerHTML = info[i].link;
 		document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete";
+		document.querySelectorAll('.post')[postCount].querySelector('.reply').innerHTML = "reply";
+		document.querySelectorAll('.post')[postCount].querySelector('.reply').setAttribute("data-toggle", "modal");
+		document.querySelectorAll('.post')[postCount].querySelector('.reply').setAttribute("data-target", "#exampleModal");
 		document.querySelectorAll('.post')[postCount].querySelector('.like-count').innerHTML = info[i].likes;
 		document.querySelectorAll('.post')[postCount].id = info[i].key;
 		postCount++;
@@ -105,6 +109,14 @@ document.querySelector('#post-container').addEventListener("click", function(e) 
 			ref.doc(e.target.parentElement.id).update({likes: likeCount});
 			document.getElementById(e.target.parentElement.id).querySelector('.like-count').innerHTML = likeCount;
 		});
+	} else if (e.target.className.indexOf("reply") > 0) {
+		var copyPostId = document.getElementById(e.target.parentElement.id).id;
+		var copyName = document.getElementById(e.target.parentElement.id).querySelector('.name').innerHTML;
+		var copyDate = document.getElementById(e.target.parentElement.id).querySelector('.date').innerHTML;
+		var copyPost = document.getElementById(e.target.parentElement.id).querySelector('.text-entered').innerHTML;
+		document.getElementById('quoted-post').innerHTML = copyName + " @ " + copyDate + "<br>" + "\"" + copyPost + "\"";
 	};
 });
+
+
 
