@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <title>My Website!</title>
@@ -48,31 +50,6 @@
       <br>
       <button id="update" class="btn btn-outline-secondary btn-block">Load More...</button>
       <br>
-      <!--<ul class="list-group">
-        <li class="list-group-item">
-          <form>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user" aria-hidden="true"></i></span>
-              </div>
-              <input type="text" id="name" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fas fa-link" aria-hidden="true"></i></span>
-              </div>
-              <input type="text" id="link" class="form-control" placeholder="www.example.com" aria-label="Link" aria-describedby="basic-addon1">
-            </div>
-            <div id="quoted-post">
-              
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" id="text" rows="3" placeholder="enter text here"></textarea>
-            </div>
-            <button id="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </li>
-      </ul>-->
 
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Post Reply</button>
@@ -96,14 +73,8 @@
                 </div>
                 <input type="text" id="name" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
               </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-link" aria-hidden="true"></i></span>
-                </div>
-                <input type="text" id="link" class="form-control" placeholder="www.example.com" aria-label="Link" aria-describedby="basic-addon1">
+              <div id="quoted-post" class="border bg-light rounded font-italic p-1">
               </div>
-                <div id="quoted-post" class="font-italic">
-                </div>
               <div class="form-group">
                 <textarea class="form-control" id="text" rows="3" placeholder="enter text here"></textarea>
               </div>
@@ -112,7 +83,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button id="submit" type="button" class="btn btn-primary">Submit</button>
+              <button id="submit" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
@@ -156,7 +127,7 @@
 <script src="js/forum.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
