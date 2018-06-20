@@ -6,6 +6,7 @@ var info = [];
 var lastVisible;
 var copyPostId = null;
 var postCount = 0;
+var loadCount = 5;
 
 // Event listeners
 document.querySelector('#submit').addEventListener("click", function() {
@@ -14,7 +15,7 @@ document.querySelector('#submit').addEventListener("click", function() {
 	clear();
 });
 document.getElementById("update").addEventListener("click", function() {
-	populate();
+	next();
 });
 document.querySelector('#post-container').addEventListener("click", function(e) {
 	if(e.target.className.indexOf("delete") > 0) {
@@ -60,17 +61,18 @@ function loadDoc() {
 }
 //Query initial set of docs
 function query() {
-	ref.orderBy("date").limit(5).get().then(function(querySnapshot) {
+	ref.orderBy("date").limit(loadCount).get().then(function(querySnapshot) {
 		querySnapshot.docs.map(function (documentSnapshot,x) {
 			info.push(documentSnapshot.data());
 			info[x].key = documentSnapshot.id;
 		});
 		lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+		populate();
 	});
 }
 //Query next set of docs
 function next() {
-	ref.orderBy("date").startAfter(lastVisible).limit(5).get().then(function(querySnapshot) {
+	ref.orderBy("date").startAfter(lastVisible).limit(loadCount).get().then(function(querySnapshot) {
 		querySnapshot.docs.map(function (documentSnapshot,x) {
 			info.push(documentSnapshot.data());
 			info[x].key = documentSnapshot.id;
@@ -80,6 +82,7 @@ function next() {
 		} else {
 			console.log("No More Documents");
 		}
+		populate();
 	});
 }
 //Populate set of docs to HTML
@@ -121,7 +124,6 @@ function populate() {
 		postCount++;
 	}
 	info = [];
-	next();
 }
 
 //jQuery functions
@@ -131,9 +133,7 @@ $(document).ready(function(){
 		document.getElementById('quoted-post').innerHTML = "";
 		clear();
 	})
+	//Initial page load query
+	query();
 });
 
-//Initial page load query
-(function(){
-	query();
-})();
