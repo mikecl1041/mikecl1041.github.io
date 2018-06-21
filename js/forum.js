@@ -130,7 +130,7 @@ function populate() {
 //Update new doc count
 function countUpdate() {
 	var newPosts = totalPosts - postCount;
-	document.getElementById('new-post-count').innerHTML = " (" + newPosts + " new)"
+	document.getElementById('new-post-count').innerHTML = newPosts + " new"
 }
 
 //jQuery functions
