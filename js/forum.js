@@ -7,6 +7,7 @@ var lastVisible;
 var copyPostId = null;
 var postCount = 0;
 var loadCount = 5;
+var totalPosts = 0;
 
 // Event listeners
 document.querySelector('#submit').addEventListener("click", function() {
@@ -14,19 +15,19 @@ document.querySelector('#submit').addEventListener("click", function() {
 	loadDoc();
 	clear();
 });
-document.getElementById("update").addEventListener("click", function() {
+document.getElementById('update').addEventListener("click", function() {
 	next();
 });
 document.querySelector('#post-container').addEventListener("click", function(e) {
 	if(e.target.className.indexOf("delete") > 0) {
-		db.collection("Forum Content").doc(e.target.parentElement.id).update({active: false});
-	} else if(e.target.className.indexOf("like-click") > 0) {
+		db.collection('Forum Content').doc(e.target.parentElement.id).update({active: false});
+	} else if(e.target.className.indexOf('like-click') > 0) {
 		ref.doc(e.target.parentElement.id).get().then(function(doc) {
 			var likeCount = doc.data().likes + 1;
 			ref.doc(e.target.parentElement.id).update({likes: likeCount});
 			document.getElementById(e.target.parentElement.id).querySelector('.like-count').innerHTML = likeCount;
 		});
-	} else if (e.target.className.indexOf("reply") > 0) {
+	} else if (e.target.className.indexOf('reply') > 0) {
 		copyPostId = document.getElementById(e.target.parentElement.id).id;
 		var copyName = document.getElementById(e.target.parentElement.id).querySelector('.name').innerHTML;
 		var copyDate = document.getElementById(e.target.parentElement.id).querySelector('.date').innerHTML;
@@ -47,7 +48,6 @@ function loadDoc() {
 		name: document.querySelector('#name').value,
 		date: new Date(),
 		text: document.querySelector('#text').value,
-		link: document.querySelector('#link').value,
 		likes: 0,
 		active: true,
 		reply: copyPostId
@@ -68,6 +68,7 @@ function query() {
 		});
 		lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
 		populate();
+		countUpdate();
 	});
 }
 //Query next set of docs
@@ -79,10 +80,11 @@ function next() {
 		});
 		if (querySnapshot.docs[querySnapshot.docs.length-1] != undefined) {
 			lastVisible = querySnapshot.docs[querySnapshot.docs.length-1];
+			populate();
+			countUpdate();
 		} else {
 			console.log("No More Documents");
 		}
-		populate();
 	});
 }
 //Populate set of docs to HTML
@@ -125,6 +127,11 @@ function populate() {
 	}
 	info = [];
 }
+//Update new doc count
+function countUpdate() {
+	var newPosts = totalPosts - postCount;
+	document.getElementById('new-post-count').innerHTML = " (" + newPosts + " new)"
+}
 
 //jQuery functions
 $(document).ready(function(){
@@ -135,5 +142,11 @@ $(document).ready(function(){
 	})
 	//Initial page load query
 	query();
+});
+
+//Firestore listeners
+ref.onSnapshot(function(querySnapshot) {
+	totalPosts = querySnapshot.size;
+	countUpdate();
 });
 
