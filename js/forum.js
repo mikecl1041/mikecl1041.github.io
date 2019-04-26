@@ -36,6 +36,26 @@ document.querySelector('#post-container').addEventListener("click", function(e) 
 	};
 });
 
+//Anonymous Sign-In
+firebase.auth().signInAnonymously().catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+  // ...
+});
+
 //Functions
 //Clear Modal inputs
 function clear() {
@@ -108,14 +128,14 @@ function populate() {
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("div")).className = "embed";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("br"));
-		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-danger btn-sm delete";
+		//document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-danger btn-sm delete";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-info btn-sm like-click";
 		document.querySelectorAll('.post')[postCount].appendChild(document.createElement("button")).className = "btn btn-warning btn-sm reply";
 		document.querySelectorAll('.post')[postCount].querySelector('.name').innerHTML = info[i].name;
 		document.querySelectorAll('.post')[postCount].querySelector('.post-count').innerHTML = "#" + (postCount + 1);
 		document.querySelectorAll('.post')[postCount].querySelector('.date').innerHTML = info[i].date.toLocaleString();
 		document.querySelectorAll('.post')[postCount].querySelector('.text-entered').innerHTML = info[i].text;
-		document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete";
+		//document.querySelectorAll('.post')[postCount].querySelector('.delete').innerHTML = "delete";
 		document.querySelectorAll('.post')[postCount].querySelector('.like-click').innerHTML = "like ";
 		document.querySelectorAll('.post')[postCount].querySelector('.like-click').appendChild(document.createElement("span")).className = "badge badge-light like-count";
 		document.querySelectorAll('.post')[postCount].querySelector('.like-count').innerHTML = info[i].likes;
